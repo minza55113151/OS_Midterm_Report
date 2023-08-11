@@ -52,7 +52,7 @@ int main(){
     global_print_address();
 
     printf("Stack overflow:\n");
-    stack_overflow(0);
+    stack_overflow();
 
     return 0;
 }
