@@ -16,7 +16,7 @@ void stack_print_address(){
     stack_print_address();
 }
 
-void malloc_print_address(){
+void heap_print_address(){
     for(int i=0;i<malloc_count;i++){
         printf("%x\n", (int *)malloc(sizeof(int)));
     }
@@ -45,8 +45,8 @@ int main(){
     printf("Stack address:\n");
     stack_print_address();
 
-    printf("Malloc address:\n");
-    malloc_print_address();
+    printf("Heap address:\n");
+    heap_print_address();
 
     printf("Global address:\n");
     global_print_address();
