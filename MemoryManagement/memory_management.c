@@ -5,15 +5,6 @@ int stack_count = 0;
 int malloc_count = 0;
 int stack_overflow_count = 0;
 
-void stack_overflow(){
-    if (stack_overflow_count % 10000 == 0){
-        printf("Stack level: %d\n", stack_overflow_count);
-    }
-
-    stack_overflow_count++;
-
-    stack_overflow();
-}
 
 void stack_print_address(){
     if(stack_count <= 0) return;
@@ -26,12 +17,25 @@ void stack_print_address(){
 }
 
 void malloc_print_address(){
-    if(malloc_count <= 0) return;
+    for(int i=0;i<malloc_count;i++){
+        printf("%x\n", (int *)malloc(sizeof(int)));
+    }
+}
 
-    malloc_count--;
+void stack_overflow(){
+    if (stack_overflow_count % 10000 == 0){
+        printf("Stack level: %d\n", stack_overflow_count);
+    }
 
-    printf("%x\n", (int *)malloc(sizeof(int)));
-    malloc_print_address();
+    stack_overflow_count++;
+
+    stack_overflow();
+}
+
+void global_print_address(){
+    printf("%x\n", &stack_count);
+    printf("%x\n", &malloc_count);
+    printf("%x\n", &stack_overflow_count);
 }
 
 int main(){
@@ -43,6 +47,9 @@ int main(){
 
     printf("Malloc address:\n");
     malloc_print_address();
+
+    printf("Global address:\n");
+    global_print_address();
 
     printf("Stack overflow:\n");
     stack_overflow(0);
