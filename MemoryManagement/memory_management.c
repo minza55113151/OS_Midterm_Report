@@ -22,6 +22,12 @@ void heap_print_address(){
     }
 }
 
+void global_print_address(){
+    printf("%x\n", &stack_count);
+    printf("%x\n", &malloc_count);
+    printf("%x\n", &stack_overflow_count);
+}
+
 void stack_overflow(){
     if (stack_overflow_count % 10000 == 0){
         printf("Stack level: %d\n", stack_overflow_count);
@@ -30,12 +36,6 @@ void stack_overflow(){
     stack_overflow_count++;
 
     stack_overflow();
-}
-
-void global_print_address(){
-    printf("%x\n", &stack_count);
-    printf("%x\n", &malloc_count);
-    printf("%x\n", &stack_overflow_count);
 }
 
 int main(){
