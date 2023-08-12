@@ -12,20 +12,20 @@ void stack_print_address(){
     stack_count--;
 
     int a;
-    printf("%x\n", &a);
+    printf("%p\n", &a);
     stack_print_address();
 }
 
 void heap_print_address(){
     for(int i=0;i<malloc_count;i++){
-        printf("%x\n", (int *)malloc(sizeof(int)));
+        printf("%p\n", (int *)malloc(sizeof(int)));
     }
 }
 
 void global_print_address(){
-    printf("%x\n", &stack_count);
-    printf("%x\n", &malloc_count);
-    printf("%x\n", &stack_overflow_count);
+    printf("%p\n", &stack_count);
+    printf("%p\n", &malloc_count);
+    printf("%p\n", &stack_overflow_count);
 }
 
 void stack_overflow(){
